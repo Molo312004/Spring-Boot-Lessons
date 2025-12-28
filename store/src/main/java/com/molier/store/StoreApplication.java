@@ -11,7 +11,8 @@ public class StoreApplication {
 		// SpringApplication.run(StoreApplication.class, args);
 		ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
 		var orderService = context.getBean(OrderService.class);
-		
+		Items item1 = new Pen("MaxWriter", 20);
+		System.out.println(item1.getPrice());
 		orderService.placeOrder();
 	}
 

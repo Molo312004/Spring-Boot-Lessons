@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <body>
+        <h2>My Cart</h2>
+        <table border = "1">
+            <tr>
+                <tr>Name</th>
+                <th>Price</th>
+            </tr>
+
+            <tr th:each="c:${cart}">
+                <td th:text = "${c.itemName}"></td>
+                <td th:text = "${c.price}"></td>
+            </tr>
+        </table>
+
+        <h3>Total: <span th:text="${total}"></span></h3>
+
+        <a href="/">Back to items</a>
+
+    </body>
+</html>
