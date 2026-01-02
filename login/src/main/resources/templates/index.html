@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Page</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <!-- This is the signup page -->
+    <h1>Sign up to Molier Store!</h1>
+
+    <!--Form sends data to the signup endpoint in AuthController.java through POST mapping-->
+    <form action = "signup" method= "post">
+        <label for= "firstname">First Name:</label>
+        <input type="text" id="fname" name="fname"><br><br>
+        
+        <label for="lastname">Last Name: </label>
+        <input type = "text" id = "lname" name = "lname"><br><br>
+
+        <label for="mail">Email: </label>
+        <input type = "text" id = "mail" name = "mail"><br><br>
+
+        <label for="password">Password </label>
+        <input type = "password" id = "password" name = "password"><br><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+
+    <br>
+    <h2>Already have an account?<h2>
+    <!--This link uses the Thymeleaf @href attribute to generate a link to the login endpoint in AuthController.java.-->
+    <!--The AuthController handles the login page request and redirects the user to the login page-->
+    <a th:href="@{/login}">Press here to go to the login page</a>
+    
+</body>
+</html>
