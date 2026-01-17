@@ -1,0 +1,13 @@
+spring:
+  
+  application:
+    name: store
+  datasource:
+    url: jdbc:mysql://localhost:3306/store_db?createDatabaseIfNotExist=true
+    username: root
+    password: root
+  flyway:
+    enabled: true
+    repair: true
+server:
+  port: 8081
