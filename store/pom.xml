@@ -75,6 +75,12 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<!--Lombok for generating getters, setters, constructors, etc.-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -83,6 +89,18 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				
+				<configuration>
+					<url>jdbc:mysql://localhost:3306/store_db?createDatabaseIfNotExist=true</url>
+					<user>root</user>
+					<password>root</password>
+					<cleanDisabled>false</cleanDisabled>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
