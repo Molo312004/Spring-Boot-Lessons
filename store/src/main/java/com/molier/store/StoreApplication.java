@@ -25,20 +25,17 @@ public class StoreApplication {
 				.zip("62701")
 				.build();
 
+		user.addTag("Adidas");
+		user.addTag("Nike");
+		user.removeTag("Adidas");
+
 		var profile = Profile.builder()
-				.bio("Hello my name is Molo Molier. I am a Software Engineer")
-				.dateOfBirth(LocalDate.of(2004, 01, 03))
-				.phoneNumber("123456789")
-				.loyaltyPoints(9999)
+				.bio("Hello my name is Moloyimdang M Molier")
 				.build();
 
-		var tag1 = Tag.builder()
-				.name("New Arrival")
-				.build();
-
-		System.out.println(user.getName() + "\n" + user.getEmail());
-		System.out.println(profile.getBio());
-		System.out.println(profile.getDateOfBirth());
+		user.setProfile(profile);
+		profile.setUser(user);
+		System.out.println(user);
 
 	}
 

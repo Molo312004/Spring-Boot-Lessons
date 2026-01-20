@@ -3,10 +3,15 @@ package com.molier.store.entities;
 import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Column;
@@ -16,6 +21,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Builder
+@ToString
 @Table(name = "profiles")
 public class Profile {
     
@@ -35,5 +41,11 @@ public class Profile {
 
     @Column(name = "loyalty_points")
     private int loyaltyPoints;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "id")
+    @ToString.Exclude
+    private User user;
 
 }

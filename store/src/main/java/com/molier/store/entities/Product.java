@@ -1,31 +1,30 @@
 package com.molier.store.entities;
 
-import jakarta.annotation.Generated;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Column;
-import jakarta.persistence.ManyToMany;
-import java.util.Set;
-import java.util.HashSet;
+import jakarta.persistence.GenerationType;
 
-import com.molier.store.entities.*;
-
-@NoArgsConstructor
 @Entity
 @Getter
 @Setter
-@ToString(exclude = {"users"})
-@Table(name = "tags")
-public class Tag {
-    
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Table(name = "products")
+@ToString
+public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -34,15 +33,11 @@ public class Tag {
     @Column(nullable = false, name = "name")
     private String name;
 
-    public Tag(String tagName){
-        name = tagName;
-    }
+    @Column(nullable = false, name = "price")
+    private float price;
 
-    @ManyToMany(mappedBy = "tags")
-    Set<User> users = new HashSet<>();
-
-
-
-
-
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    @ToString.Exclude
+    private Category category;
 }
