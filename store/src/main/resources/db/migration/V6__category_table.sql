@@ -15,3 +15,4 @@ create table products(
     on delete restrict 
     on update cascade
 );
+

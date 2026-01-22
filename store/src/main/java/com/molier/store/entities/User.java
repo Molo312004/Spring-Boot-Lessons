@@ -2,6 +2,7 @@ package com.molier.store.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -21,7 +22,7 @@ import java.util.List;
 import com.molier.store.entities.*;
 import jakarta.persistence.JoinTable;
 import java.util.Set;
-
+import jakarta.persistence.CascadeType;
 import org.apache.commons.lang3.builder.ToStringExclude;
 
 import java.util.HashSet;
@@ -52,7 +53,7 @@ public class User {
     private String password;
 
     @Builder.Default
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
     private List<Address> address = new ArrayList<>();
 
     public void addAddress(Address address){
@@ -103,7 +104,7 @@ public class User {
     @Builder.Default
     Set<Tag> tags = new HashSet<>();
 
-    @OneToOne
+    @OneToOne(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Profile profile;
 
 }

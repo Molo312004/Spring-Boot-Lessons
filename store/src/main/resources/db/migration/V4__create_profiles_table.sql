@@ -9,3 +9,4 @@ create table profiles(
 		foreign key (id)
         references users(id)
 );
+

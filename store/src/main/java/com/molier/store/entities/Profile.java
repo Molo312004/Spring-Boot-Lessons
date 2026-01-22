@@ -7,6 +7,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Column;
 import java.time.LocalDate;
+import jakarta.persistence.CascadeType;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Getter
 @Setter
@@ -42,7 +46,7 @@ public class Profile {
     @Column(name = "loyalty_points")
     private int loyaltyPoints;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @MapsId
     @JoinColumn(name = "id")
     @ToString.Exclude
